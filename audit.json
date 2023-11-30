@@ -1,0 +1,21 @@
+{
+    "keepSettings": {
+        "type": 2,
+        "amount": 10
+    },
+    "auditFilename": "audit.json",
+    "hashType": "md5",
+    "extension": "",
+    "files": [
+        {
+            "date": 1701328478110,
+            "name": "C:\\Users\\LIUZHIHAO\\Desktop\\Mrs\\server\\log\\access-20231130.log",
+            "hash": "07ec284256a0fd5c3011997dbc6e29e9"
+        },
+        {
+            "date": 1701328664910,
+            "name": "C:\\Users\\LIUZHIHAO\\Desktop\\Mrs\\server\\logs\\access-20231130.log",
+            "hash": "885f16c61fdf1360f5d62ddbc63e08cf"
+        }
+    ]
+}
