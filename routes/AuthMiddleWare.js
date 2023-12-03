@@ -7,8 +7,6 @@ const secretKey = process.env.JWT_SECRET_KEY
 const USER_TOKEN_PATH = "/_user"
 const AuthMiddleWare = async (req, res, next) => {
     if (req.path.indexOf(USER_TOKEN_PATH) > -1) {
-        const query  = require("../utils/DbUtils")
-        const genid = require("../utils/GenIdUtils")
         let token = req.headers.token
         if (token === undefined) {
             res.status(401).send({

@@ -7,6 +7,7 @@ const genid = require("../utils/GenIdUtils")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const secretKey = process.env.JWT_SECRET_KEY
+const JWT_EXPIRATION = Number(process.env.JWT_EXPIRATION)
 
 router.post("/register", async (req,res) => {
     try {
@@ -35,7 +36,7 @@ router.post("/register", async (req,res) => {
             return
         }
         let signup_sql = "INSERT INTO  `user` (`id`,`username`,`password`) VALUES (?,?,?)"
-        let signup_params = [genid.NextId(),username,password]
+        let signup_params = [genid.NextNumber().toString().slice(0,8),username,password]
 
         await query(signup_sql,signup_params)
         logger.info(`User: ${username} registered.`)
@@ -75,7 +76,7 @@ router.post("/login", async (req, res) => {
             id  : rows[0].id,
             username:   rows[0].username
         }
-        let login_token = jwt.sign(payload,secretKey, {expiresIn : 60 * 60 * 24 * 7})
+        let login_token = jwt.sign(payload,secretKey, {expiresIn : JWT_EXPIRATION})
         //Update token
         await query("UPDATE `user` SET `token` =? WHERE `id` =?", [login_token, rows[0].id])
 
